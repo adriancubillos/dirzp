@@ -1,0 +1,24 @@
+<form [formGroup]="form">
+
+  <input formControlName="name" />
+  <div formGroupName="contact">
+    <input formControlName="email">
+    <input formControlName="phone">
+  </div>
+    <div *ngIf="form.errors" class="alert alert-danger">
+      <div *ngIf="form.errors.invalidLength">Topic must contain at least 3 characters</div>
+      <div *ngIf="form.errors.cannotHaveSpaces">Spaces not allowed in topics.</div>
+    </div>
+    <input 
+      type="text" class="form-control"
+      (keyup.enter)="addTopic(topic)" #topic>
+    <ul class="list-group">
+      <li 
+        *ngFor="let topic of topics.controls"
+        (click)="removeTopic(topic)"
+        class="list-group-item">
+      {{topic.value}}
+      </li>
+    </ul>
+  </form>
+  

@@ -1,0 +1,8 @@
+<input (keyup.enter)="createGenre(title)" #title type="text" class="form-control">
+<ul class="list-group">
+  <li *ngFor="let item of genres; index as i" class="list-group-item">
+    <button (click)="updateGenre(item, title)" class="btn btn-default btn-sm">Update</button>
+    <button (click)="deleteGenre(item)" class="btn btn-default btn-sm">Delete</button>
+    {{i+1}} -- {{item.genre}}
+  </li>
+</ul>
